@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import BirthdaySplash from "./components/BirthdaySplash";
+import InstagramFeed from "./components/InstagramFeed";
 
 function useFadeUp() {
   const ref = useRef<HTMLDivElement>(null);
@@ -326,6 +327,9 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {/* ── INSTAGRAM FEED ── */}
+      <InstagramFeed />
 
       {/* ── FOOTER (dark) ── */}
       <footer id="contact" style={{ background: "#0d0d0d", padding: "5rem 2.5rem 3rem", borderTop: "1px solid #1a1a1a" }}>
