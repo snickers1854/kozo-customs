@@ -20,9 +20,9 @@ function useFadeUp() {
 }
 
 const COLLECTIONS = [
-  { id: 1, label: "Drop 001", title: "The Originals", subtitle: "Classic silhouettes, custom touch" },
-  { id: 2, label: "Drop 002", title: "Heavy Weights", subtitle: "Premium blanks, signature finish" },
-  { id: 3, label: "Drop 003", title: "Limited Runs", subtitle: "One-of-ones, never restocked" },
+  { id: 1, label: "Drop 001", title: "The Originals", subtitle: "Classic silhouettes, custom touch", img: "https://picsum.photos/seed/kozo-orig/600/800" },
+  { id: 2, label: "Drop 002", title: "Heavy Weights", subtitle: "Premium blanks, signature finish", img: "https://picsum.photos/seed/kozo-heavy/600/800" },
+  { id: 3, label: "Drop 003", title: "Limited Runs", subtitle: "One-of-ones, never restocked", img: "https://picsum.photos/seed/kozo-limit/600/800" },
 ];
 
 const MARQUEE = [
@@ -170,29 +170,27 @@ export default function Home() {
           }}>
             {COLLECTIONS.map((col) => (
               <div key={col.id} className="collection-card">
-                {/* Placeholder image area */}
-                <div style={{
-                  width: "100%", aspectRatio: "3/4",
-                  background: "#ede",
-                  backgroundColor: col.id === 1 ? "#ece9e3" : col.id === 2 ? "#e6e4de" : "#ede9e1",
-                  display: "flex", alignItems: "center", justifyContent: "center",
-                  position: "relative", overflow: "hidden",
-                }}>
-                  <div style={{
-                    position: "absolute", inset: 16,
-                    border: "1px solid rgba(13,13,13,0.08)",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                  }}>
-                    <span style={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontWeight: 300,
-                      fontSize: "4rem",
-                      color: "rgba(13,13,13,0.07)",
-                      letterSpacing: "0.08em",
-                    }}>
-                      {col.id === 1 ? "KŌ" : col.id === 2 ? "ZŌ" : "KC"}
-                    </span>
-                  </div>
+                {/* Image */}
+                <div style={{ width: "100%", aspectRatio: "3/4", overflow: "hidden", position: "relative" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={col.img}
+                    alt={col.title}
+                    style={{
+                      width: "100%", height: "100%",
+                      objectFit: "cover",
+                      filter: "grayscale(30%) contrast(1.05)",
+                      transition: "transform 0.5s ease, filter 0.5s ease",
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1.04)";
+                      (e.currentTarget as HTMLImageElement).style.filter = "grayscale(0%) contrast(1.05)";
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLImageElement).style.transform = "scale(1)";
+                      (e.currentTarget as HTMLImageElement).style.filter = "grayscale(30%) contrast(1.05)";
+                    }}
+                  />
                 </div>
 
                 <div style={{ padding: "1.75rem" }}>
@@ -229,31 +227,31 @@ export default function Home() {
             <div style={{
               width: "100%", aspectRatio: "4/5",
               border: "1px solid rgba(247,246,242,0.1)",
-              display: "flex", alignItems: "center", justifyContent: "center",
               position: "relative", overflow: "hidden",
-              background: "#111",
             }}>
-              <div style={{ position: "absolute", inset: 24, border: "1px solid rgba(247,246,242,0.05)" }} />
-              {/* Outlined brand in plate */}
-              <div style={{ textAlign: "center" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://picsum.photos/seed/kozo-about/800/1000"
+                alt="About KŌZŌ CUSTŌMS"
+                style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(40%) brightness(0.75)" }}
+              />
+              {/* Overlay text */}
+              <div style={{
+                position: "absolute", inset: 0,
+                display: "flex", alignItems: "flex-end",
+                padding: "2rem",
+                background: "linear-gradient(to top, rgba(13,13,13,0.6) 0%, transparent 60%)",
+              }}>
                 <p style={{
                   fontFamily: "'Cormorant Garamond', serif",
+                  fontStyle: "italic",
                   fontWeight: 300,
-                  fontSize: "clamp(2.5rem, 8vw, 5rem)",
-                  letterSpacing: "0.1em",
-                  WebkitTextStroke: "1px rgba(247,246,242,0.15)",
-                  color: "transparent",
-                  lineHeight: 1,
-                }}>KŌZŌ</p>
-                <div style={{ width: 1, height: 40, background: "rgba(247,246,242,0.12)", margin: "0.5rem auto" }} />
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 300,
-                  fontSize: "clamp(2rem, 6vw, 3.5rem)",
-                  letterSpacing: "0.1em",
-                  WebkitTextStroke: "1px rgba(247,246,242,0.15)",
-                  color: "transparent",
-                }}>CUSTŌMS</p>
+                  fontSize: "1rem",
+                  color: "rgba(247,246,242,0.7)",
+                  letterSpacing: "0.05em",
+                }}>
+                  Every piece, made by hand.
+                </p>
               </div>
             </div>
             <div style={{
