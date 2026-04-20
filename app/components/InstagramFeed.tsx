@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import Script from "next/script";
 
 const POSTS = [
   "https://www.instagram.com/p/DVUAqWRj5Z6/",
@@ -18,18 +18,6 @@ declare global {
 }
 
 export default function InstagramFeed() {
-  useEffect(() => {
-    if (window.instgrm) {
-      window.instgrm.Embeds.process();
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = "https://www.instagram.com/embed.js";
-    script.async = true;
-    script.onload = () => window.instgrm?.Embeds.process();
-    document.body.appendChild(script);
-  }, []);
-
   return (
     <section style={{ padding: "8rem 2.5rem", background: "var(--bg)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -52,6 +40,7 @@ export default function InstagramFeed() {
             <blockquote
               key={url}
               className="instagram-media"
+              data-instgrm-captioned
               data-instgrm-permalink={`${url}?utm_source=ig_embed&utm_campaign=loading`}
               data-instgrm-version="14"
               style={{
@@ -62,7 +51,23 @@ export default function InstagramFeed() {
                 width: "100%",
                 minWidth: 0,
               }}
-            />
+            >
+              <div style={{ padding: "16px" }}>
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontFamily: "'Inter', sans-serif",
+                    fontSize: "0.75rem",
+                    color: "#888",
+                    textDecoration: "none",
+                  }}
+                >
+                  View this post on Instagram
+                </a>
+              </div>
+            </blockquote>
           ))}
         </div>
 
@@ -77,6 +82,13 @@ export default function InstagramFeed() {
           </a>
         </div>
       </div>
+
+      {/* Next.js Script handles loading correctly — fires onLoad after DOM is ready */}
+      <Script
+        src="https://www.instagram.com/embed.js"
+        strategy="lazyOnload"
+        onLoad={() => window.instgrm?.Embeds.process()}
+      />
     </section>
   );
 }
