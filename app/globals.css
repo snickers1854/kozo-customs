@@ -1,0 +1,194 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Unbounded:wght@400;700;900&display=swap');
+
+:root {
+  --bg: #0a0a0a;
+  --fg: #f5f0e8;
+  --accent: #c8a96e;
+  --accent-dim: #8a6e3e;
+  --muted: #3a3a3a;
+  --border: #222;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Birthday Splash ── */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.9s ease;
+}
+
+.splash-overlay.hiding {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.splash-overlay.hidden {
+  display: none;
+}
+
+/* ── Nav ── */
+.nav-link {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.nav-link:hover {
+  opacity: 1;
+}
+
+/* ── Hero ── */
+.brand-name {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+}
+
+.gold-text {
+  color: var(--accent);
+}
+
+.hero-tagline {
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* ── Marquee ── */
+.marquee-wrap {
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 3rem;
+  animation: marquee 20s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ── Cards ── */
+.collection-card {
+  background: #111;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.collection-card:hover {
+  border-color: var(--accent-dim);
+  transform: translateY(-4px);
+}
+
+/* ── Section labels ── */
+.section-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* ── Button ── */
+.btn-primary {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  background: var(--accent);
+  color: #0a0a0a;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover {
+  background: #d4b87a;
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 0.85rem 2.5rem;
+  background: transparent;
+  color: var(--fg);
+  font-family: 'Unbounded', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid var(--muted);
+  transition: border-color 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Divider ── */
+.gold-line {
+  width: 3rem;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ── Scroll fade-in ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Particle dots for splash ── */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: float-up 3s ease-in forwards;
+}
+
+@keyframes float-up {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-120vh) scale(0.3); opacity: 0; }
+}
