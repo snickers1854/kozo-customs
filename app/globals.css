@@ -153,6 +153,27 @@ body {
 }
 .btn-ghost:hover { border-color: var(--fg); }
 
+/* ── Text link (minimal, no border) ── */
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--fg);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+.btn-text:hover {
+  border-color: var(--fg);
+  opacity: 0.7;
+}
+
 .btn-ghost-light {
   display: inline-block;
   padding: 0.9rem 2.75rem;

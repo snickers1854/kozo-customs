@@ -119,7 +119,7 @@ export default function Home() {
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
             <a href="#collections" className="btn-dark">View Collections</a>
-            <a href="#contact" className="btn-ghost">DM for Commissions</a>
+            <a href="https://instagram.com/kozocustoms" target="_blank" rel="noopener noreferrer" className="btn-ghost">DM for Commissions</a>
           </div>
         </div>
 
@@ -156,16 +156,11 @@ export default function Home() {
       <section id="collections" style={{ padding: "8rem 2.5rem", background: "var(--bg)" }}>
         <div ref={colRef} className="fade-up" style={{ maxWidth: 1200, margin: "0 auto" }}>
 
-          <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "4rem", flexWrap: "wrap", gap: "1rem" }}>
-            <div>
-              <p className="section-label" style={{ marginBottom: "0.75rem" }}>The Drops</p>
-              <h2 className="brand-serif" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#0d0d0d" }}>
-                Collections
-              </h2>
-            </div>
-            <a href="#contact" className="btn-ghost" style={{ fontSize: "0.62rem", padding: "0.75rem 1.75rem" }}>
-              Inquire about a custom piece
-            </a>
+          <div style={{ marginBottom: "4rem" }}>
+            <p className="section-label" style={{ marginBottom: "0.75rem" }}>The Drops</p>
+            <h2 className="brand-serif" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: "#0d0d0d" }}>
+              Collections
+            </h2>
           </div>
 
           <div style={{
@@ -210,8 +205,8 @@ export default function Home() {
                   <p style={{ fontFamily: "'Inter', sans-serif", fontWeight: 300, fontSize: "0.8rem", color: "#888", marginBottom: "1.5rem", lineHeight: 1.6 }}>
                     {col.subtitle}
                   </p>
-                  <a href="#contact" className="btn-ghost" style={{ fontSize: "0.6rem", padding: "0.65rem 1.5rem" }}>
-                    Inquire
+                  <a href="https://instagram.com/kozocustoms" target="_blank" rel="noopener noreferrer" className="btn-text">
+                    Inquire →
                   </a>
                 </div>
               </div>
